@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-// import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
+import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'chkbox-selection-template-demo',
@@ -52,6 +52,13 @@ import { AfterViewInit, Component } from '@angular/core';
         </ul>
       </div>
 
+      <!-- <ngx-smart-modal #modalData identifier="modalData" customClass="nsm-dialog-animation-ltr">
+        <h1>Invoice</h1>
+        <div *ngIf="modalData.hasData()">
+          <pre>{{ modalData.getData() | json }}</pre>
+        </div>
+        <button class="button -dark" (click)="modalData.close()">Close</button>
+      </ngx-smart-modal> -->
       
   `
 })
@@ -62,9 +69,25 @@ export class CustomCheckboxSelectionComponent {
   dataCollection = [];
   private bodyText: string;
 
-  constructor() {
+  constructor(public ngxSmartModalService: NgxSmartModalService) {
     this.fetch((data) => {
       this.rows = data;
+      console.log(this.rows);
+    });
+  }
+
+  ngAfterViewInit() {
+    const obj: Object = {
+      prop1: 'test',
+      prop2: true,
+      prop3: [{a: 'a', b: 'b'}, {c: 'c', d: 'd'}],
+      prop4: 327652175423
+    };
+
+    this.ngxSmartModalService.setModalData(obj, 'modalData');
+
+    this.ngxSmartModalService.getModal('modalData').onOpen.subscribe((modal: NgxSmartModalComponent) => {
+      console.log(modal.getData());
     });
   }
 

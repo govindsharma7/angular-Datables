@@ -46,22 +46,6 @@
 
 <body>
   <app><span class="loading">Loading...</span></app>
-  <div class="github-button-wrap">
-    <a class="github-button" href="https://github.com/swimlane/angular2-data-table" data-style="mega" data-count-href="/swimlane/angular2-data-table/stargazers" data-count-api="/repos/swimlane/angular2-data-table#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star swimlane/angular2-data-table on GitHub">Star</a>
-  </div>
-
-  <% if (htmlWebpackPlugin.options.googleAnalytics) { %>
-    <script type="text/javascript">
-      window.GoogleAnalyticsObject='ga';window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-      <% if (htmlWebpackPlugin.options.googleAnalytics.trackingId) { %>
-      ga('create','<%= htmlWebpackPlugin.options.googleAnalytics.trackingId %>','auto');
-      <% } else { throw new Error("html-webpack-template requires googleAnalytics.trackingId config"); } %>
-      <% if (htmlWebpackPlugin.options.googleAnalytics.pageViewOnLoad) { %>
-      ga('send','pageview')
-      <% } %>
-    </script>
-    <script async defer src="https://www.google-analytics.com/analytics.js" type="text/javascript"></script>
-    <% } %>
 </body>
 
 </html>
